@@ -1,0 +1,239 @@
+package csb;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class Calc implements ActionListener{
+	
+	String op;
+	int n1,n2;
+	JTextField tf;
+	JButton b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,ad,sub,mult,divd,res,clr;
+	//JButton b0;
+	
+	Calc(){
+		
+		JFrame f=new JFrame("Calculator");
+		JPanel p=new JPanel();
+		tf=new JTextField(20);
+		
+		b0=new JButton("0");
+		b1=new JButton("1");
+		b2=new JButton("2");
+		b3=new JButton("3");
+		b4=new JButton("4");
+		b5=new JButton("5");
+		b6=new JButton("6");
+		b7=new JButton("7");
+		b8=new JButton("8");
+		b9=new JButton("9");
+		ad=new JButton("+");
+		sub=new JButton("-");
+		mult=new JButton("X");
+		divd=new JButton("/");
+		res=new JButton("=");
+		clr=new JButton("C");
+		
+		
+		
+		p.setLayout(null);
+		
+		tf.setBounds(100,100,200,30);		
+		p.add(tf);
+		
+		b1.setBounds(100,140,50,30);
+		p.add(b1);
+		
+		b2.setBounds(150,140,50,30);
+		p.add(b2);
+		
+		b3.setBounds(200,140,50,30);
+		p.add(b3);
+		
+		
+		ad.setBounds(250,140,50,30);
+		p.add(ad);
+		
+		b4.setBounds(100,170,50,30);
+		p.add(b4);
+		
+		b5.setBounds(150,170,50,30);
+		p.add(b5);
+		
+		b6.setBounds(200,170,50,30);
+		p.add(b6);
+		
+		
+		sub.setBounds(250,170,50,30);
+		p.add(sub);
+		
+		b7.setBounds(100,200,50,30);
+		p.add(b7);
+		
+		b8.setBounds(150,200,50,30);
+		p.add(b8);
+		
+		b9.setBounds(200,200,50,30);
+		p.add(b9);
+		
+		
+		mult.setBounds(250,200,50,30);
+		p.add(mult);
+		
+		b0.setBounds(100,230,50,30);
+		p.add(b0);
+		
+		clr.setBounds(150,230,50,30);
+		p.add(clr);
+		
+		res.setBounds(200,230,50,30);
+		p.add(res);
+		
+		divd.setBounds(250,230,50,30);
+		p.add(divd);
+				
+		f.setContentPane(p);
+		f.setSize(400,400);
+		f.setVisible(true);
+		
+		b0.addActionListener(this);
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		b3.addActionListener(this);
+		b4.addActionListener(this);
+		b5.addActionListener(this);
+		b6.addActionListener(this);
+		b7.addActionListener(this);
+		b8.addActionListener(this);
+		b9.addActionListener(this);
+		ad.addActionListener(this);
+		mult.addActionListener(this);
+		sub.addActionListener(this);
+		divd.addActionListener(this);
+		clr.addActionListener(this);
+		res.addActionListener(this);
+		
+		
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+		
+		if(e.getSource()==b0) {
+			tf.setText(tf.getText()+b0.getText());
+		}
+		
+		else if(e.getSource()==b1) {
+			tf.setText(tf.getText()+b1.getText());
+		}
+		
+		else if(e.getSource()==b2) {
+			tf.setText(tf.getText()+b2.getText());
+		}
+		
+		else if(e.getSource()==b3) {
+			tf.setText(tf.getText()+b3.getText());
+		}
+		
+		else if(e.getSource()==b4) {
+			tf.setText(tf.getText()+b4.getText());
+		}
+		
+		else if(e.getSource()==b5) {
+			tf.setText(tf.getText()+b5.getText());
+		}
+		
+		else if(e.getSource()==b6) {
+			tf.setText(tf.getText()+b6.getText());
+		}
+		
+		else if(e.getSource()==b7) {
+			tf.setText(tf.getText()+b7.getText());
+		}
+		
+		else if(e.getSource()==b8) {
+			tf.setText(tf.getText()+b8.getText());
+		}
+		
+		else if(e.getSource()==b9) {
+			tf.setText(tf.getText()+b9.getText());
+		}
+		
+		else if(e.getSource()==ad) {
+			n1=Integer.parseInt(tf.getText());
+			op="+";
+			tf.setText("");
+		}
+		
+		else if(e.getSource()==sub) {
+			n1=Integer.parseInt(tf.getText());
+			op="-";
+			tf.setText("");
+		}
+		
+		else if(e.getSource()==mult) {
+			n1=Integer.parseInt(tf.getText());
+			op="x";
+			tf.setText("");
+		}
+		
+		else if(e.getSource()==divd) {
+			n1=Integer.parseInt(tf.getText());
+			op="/";
+			tf.setText("");
+		}
+		
+		else if(e.getSource()==res) {
+			n2=Integer.parseInt(tf.getText());
+			float r=calc(n1,op,n2);
+			tf.setText(n1+" "+op+" "+n2+" = "+r);
+		}
+		
+		else if(e.getSource()==clr) {
+			tf.setText("");
+		}
+		
+		
+	}
+	
+	float calc(int a,String optr,int b) {
+		
+		float result=0;
+		
+		switch(optr) {
+		
+		case "+":
+			
+			result=a+b;
+			break;
+			
+		case "-":
+			
+			result=a-b;
+			break;
+			
+		case "x":
+			result=a*b;
+			break;
+			
+		case "/":
+			result=(float)a/b;
+			break;
+			
+		}
+		
+		return result;
+	}
+}
+
+public class Calculator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Calc c=new Calc();
+		
+	}
+
+}
